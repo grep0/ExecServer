@@ -1,0 +1,19 @@
+TOOLS = show_args.exe show_env.exe cat_err.exe countdown.exe
+CC = gcc
+
+all: $(TOOLS)
+
+show_args.exe: show_args.c
+	$(CC) -o $@ $^
+
+show_env.exe: show_env.c
+	$(CC) -o $@ $^
+
+cat_err.exe: cat_err.c
+	$(CC) -o $@ $^
+
+countdown.exe: countdown.c
+	$(CC) -o $@ $^
+
+clean:
+	rm -f $(TOOLS)

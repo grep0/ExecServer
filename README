@@ -1,0 +1,4 @@
+Simple XML-RPC execution server mainly for testing
+
+See t/tests.py for example of usage
+

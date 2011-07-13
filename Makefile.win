@@ -1,0 +1,22 @@
+SRC = ExecServer.cpp ServiceModule.cpp sha1.cpp $(wildcard xmlrpcpp/*.cpp)
+OBJ = $(SRC:.cpp=.o)
+
+SRC += windows.cpp
+
+CXXFLAGS = -D_WINDOWS -D_WIN32_WINNT=0x0500 -g -O -W -Wall -I xmlrpcpp
+
+LDLIBS = -lws2_32
+
+all: ExecServer
+
+ExecServer: $(OBJ)
+	$(CXX) -o $@ $^ $(LDLIBS)
+
+test_tools:
+	$(MAKE) -C .\t -f .\t\Makefile.win
+
+clean:
+	-del *.o
+	del xmlrpcpp\*.o
+	del ExecServer.exe
+	$(MAKE) -C ./t clean
